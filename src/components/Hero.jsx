@@ -4,7 +4,7 @@ const Hero = () => {
   const handleDownload = () => {
     // Create a temporary anchor element to trigger download
     const link = document.createElement('a');
-    link.href = '/Resume.pdf';
+    link.href = 'CV.pdf';
     link.download = 'Manoj_Kumar_Resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -30,11 +30,11 @@ const Hero = () => {
               Manoj Kumar
             </h1>
             <h2 className="text-2xl md:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-6">
-              Full Stack Developer
+              Software Development Engineer
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
-              Passionate developer crafting beautiful and functional web experiences.
-              I love turning complex problems into simple, elegant solutions.
+              Passionate Software Development Engineer building scalable and reliable applications.
+              I enjoy solving complex problems by designing clean, efficient, and maintainable solutions.
             </p>
           </div>
 
