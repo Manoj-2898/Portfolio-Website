@@ -11,10 +11,55 @@
 body {
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
+  @apply antialiased text-gray-900 dark:text-gray-100;
+}
+
+::selection {
+  @apply bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-100;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.site-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: clamp(2.75rem, 6vw, 4.5rem) 0;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.65rem);
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: clamp(0.98rem, 0.9rem + 0.3vw, 1.1rem);
+  line-height: 1.65;
+}
+
+.hero-section {
+  padding: clamp(6.25rem, 12vh, 7.5rem) 0 clamp(2.5rem, 4vh, 3rem);
+}
+
+.hero-heading {
+  font-size: clamp(1.85rem, 1.1rem + 2.6vw, 3.25rem);
+  line-height: 1.15;
+}
+
+.body-copy {
+  font-size: clamp(0.98rem, 0.9rem + 0.3vw, 1.1rem);
+  line-height: 1.7;
 }
 
 /* Custom scrollbar */

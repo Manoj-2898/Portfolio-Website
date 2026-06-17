@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FaPaperPlane, FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
+import { FaPaperPlane, FaUser, FaEnvelope, FaComment, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { personalInfo } from '../data/profile';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -38,11 +39,11 @@ const Contact = () => {
       // Open email client with pre-filled data
       // This will open the user's default email client (Gmail, Outlook, etc.)
       // with all the form data pre-filled, ready to send
-      window.location.href = `mailto:paletimanoj2003@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
       
       setSubmitStatus({ 
         type: 'success', 
-        message: 'Your email client is opening. Please review and send the message to paletimanoj2003@gmail.com' 
+        message: `Your email client is opening. Please review and send the message to ${personalInfo.email}` 
       });
       
       // Reset form after a delay
@@ -53,7 +54,7 @@ const Contact = () => {
     } catch (error) {
       setSubmitStatus({ 
         type: 'error', 
-        message: 'Failed to open email client. Please email directly to paletimanoj2003@gmail.com' 
+        message: `Failed to open email client. Please email directly to ${personalInfo.email}` 
       });
       setIsSubmitting(false);
     }
@@ -62,28 +63,62 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 md:py-32 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300"
+      className="section bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 dark:text-white">
+      <div className="site-container">
+        <div className="text-center mb-10 md:mb-12" data-aos="fade-up">
+          <h2 className="section-title font-bold mb-3 text-gray-800 dark:text-white">
             Get In Touch
           </h2>
           <div className="w-24 h-1 bg-primary-600 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="section-subtitle text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Have a project in mind or want to collaborate? I'd love to hear from you!
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-5 md:gap-6 items-start">
+          <div className="lg:col-span-2 space-y-6" data-aos="fade-right">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm">
+              <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-4">
+                Contact Information
+              </h3>
+              <div className="space-y-4">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+                    <FaEnvelope />
+                  </div>
+                  <span className="text-sm break-all">{personalInfo.email}</span>
+                </a>
+                <a
+                  href={`tel:${personalInfo.phone}`}
+                  className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+                    <FaPhone />
+                  </div>
+                  <span className="text-sm">{personalInfo.phone}</span>
+                </a>
+                <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                  <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+                    <FaMapMarkerAlt />
+                  </div>
+                  <span className="text-sm">India · Open to Remote</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <form
+            className="lg:col-span-3 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-5 md:p-6 border border-gray-100 dark:border-gray-700"
             onSubmit={handleSubmit}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-10"
-            data-aos="fade-up"
+            data-aos="fade-left"
             data-aos-delay="100"
           >
             {/* Name Field */}
-            <div className="mb-6" data-aos="fade-up" data-aos-delay="150">
+            <div className="mb-4" data-aos="fade-up" data-aos-delay="150">
               <label
                 htmlFor="name"
                 className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
@@ -101,14 +136,14 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-300"
+                  className="w-full pl-12 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-300"
                   placeholder="Your Name"
                 />
               </div>
             </div>
 
             {/* Email Field */}
-            <div className="mb-6" data-aos="fade-up" data-aos-delay="200">
+            <div className="mb-4" data-aos="fade-up" data-aos-delay="200">
               <label
                 htmlFor="email"
                 className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
@@ -126,14 +161,14 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-300"
+                  className="w-full pl-12 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-300"
                   placeholder="your.email@example.com"
                 />
               </div>
             </div>
 
             {/* Message Field */}
-            <div className="mb-8" data-aos="fade-up" data-aos-delay="250">
+            <div className="mb-6" data-aos="fade-up" data-aos-delay="250">
               <label
                 htmlFor="message"
                 className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
@@ -150,7 +185,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows="6"
+                  rows="5"
                   className="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 resize-none transition-all duration-300"
                   placeholder="Your message here..."
                 />
@@ -161,7 +196,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full group px-8 py-4 bg-primary-600 text-white rounded-lg font-semibold text-lg hover:bg-primary-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="w-full group px-6 py-3.5 bg-primary-600 text-white rounded-lg font-semibold text-base hover:bg-primary-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               data-aos="fade-up"
               data-aos-delay="300"
             >
@@ -182,19 +217,6 @@ const Contact = () => {
               </div>
             )}
           </form>
-
-          {/* Contact Info */}
-          <div className="mt-12 text-center" data-aos="fade-up" data-aos-delay="350">
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Or reach out directly at:
-            </p>
-            <a
-              href="mailto:paletimanoj2003@gmail.com"
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold text-lg transition-colors"
-            >
-              paletimanoj2003@gmail.com
-            </a>
-          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { personalInfo } from '../data/profile';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -7,104 +8,85 @@ const Footer = () => {
     {
       name: 'GitHub',
       icon: FaGithub,
-      href: 'https://github.com/Manoj-2898',
-      color: 'hover:text-gray-900 dark:hover:text-white',
+      href: personalInfo.github,
+      color: 'hover:text-white',
     },
     {
       name: 'LinkedIn',
       icon: FaLinkedin,
-      href: 'https://www.linkedin.com/in/manoj-kumar-paleti-632237304',
-      color: 'hover:text-blue-600 dark:hover:text-blue-400',
+      href: personalInfo.linkedin,
+      color: 'hover:text-blue-400',
     },
     {
       name: 'Email',
       icon: FaEnvelope,
-      href: 'mailto:paletimanoj2003@gmail.com',
-      color: 'hover:text-primary-600 dark:hover:text-primary-400',
+      href: `mailto:${personalInfo.email}`,
+      color: 'hover:text-primary-400',
     },
   ];
 
+  const quickLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Education', href: '#education' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+  ];
+
+  const scrollTo = (e, href) => {
+    e.preventDefault();
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-gray-900 dark:bg-black text-gray-300 py-12 border-t border-gray-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gray-950 text-gray-300 py-10 border-t border-gray-800">
+      <div className="site-container">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* About Section */}
           <div data-aos="fade-up">
-            <h3 className="text-xl font-bold text-white mb-4">Portfolio</h3>
-            <p className="text-gray-400 leading-relaxed">
-              A passionate developer creating beautiful and functional web experiences.
-              Let's build something amazing together!
+            <h3 className="text-xl font-bold text-white mb-4">
+              {personalInfo.name}
+            </h3>
+            <p className="text-gray-400 leading-relaxed mb-4">
+              {personalInfo.title} passionate about building scalable, user-focused
+              web applications. Open to opportunities and collaborations.
             </p>
+            <div className="space-y-2 text-sm text-gray-400">
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="flex items-center gap-2 hover:text-primary-400 transition-colors break-all"
+              >
+                <FaEnvelope size={14} />
+                {personalInfo.email}
+              </a>
+              <a
+                href={`tel:${personalInfo.phone}`}
+                className="flex items-center gap-2 hover:text-primary-400 transition-colors"
+              >
+                <FaPhone size={14} />
+                {personalInfo.phone}
+              </a>
+            </div>
           </div>
 
-          {/* Quick Links */}
           <div data-aos="fade-up" data-aos-delay="100">
             <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#home"
-                  className="hover:text-primary-400 transition-colors duration-300"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  className="hover:text-primary-400 transition-colors duration-300"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#skills"
-                  className="hover:text-primary-400 transition-colors duration-300"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector('#skills')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  Skills
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className="hover:text-primary-400 transition-colors duration-300"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="hover:text-primary-400 transition-colors duration-300"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  Contact
-                </a>
-              </li>
+            <ul className="grid grid-cols-2 gap-2">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-primary-400 transition-colors duration-300 text-sm"
+                    onClick={(e) => scrollTo(e, link.href)}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Social Links */}
           <div data-aos="fade-up" data-aos-delay="200">
             <h3 className="text-xl font-bold text-white mb-4">Connect With Me</h3>
             <div className="flex space-x-4">
@@ -116,10 +98,10 @@ const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${social.color} transition-all duration-300 transform hover:scale-125`}
+                    className={`p-3 rounded-xl bg-gray-900 text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-110 border border-gray-800`}
                     aria-label={social.name}
                   >
-                    <IconComponent size={24} />
+                    <IconComponent size={20} />
                   </a>
                 );
               })}
@@ -127,10 +109,9 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-gray-400">
-            © {currentYear} Portfolio. All rights reserved. Built with React & Vite.
+          <p className="text-gray-500 text-sm">
+            © {currentYear} {personalInfo.name}. All rights reserved. Built with React & Vite.
           </p>
         </div>
       </div>
@@ -139,4 +120,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

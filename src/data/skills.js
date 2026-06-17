@@ -1,80 +1,62 @@
-import { 
-  FaReact, 
-  FaPython, 
-  FaHtml5, 
-  FaCss3Alt, 
-  FaJs, 
+import {
+  FaPython,
+  FaJs,
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
   FaGitAlt,
   FaBolt,
-  FaRobot,
-  FaBrain,
   FaMousePointer,
+  FaUsers,
+  FaComments,
+  FaLightbulb,
+  FaHandshake,
   FaProjectDiagram,
+  FaCode,
 } from 'react-icons/fa';
-import { 
-  SiPostgresql,
-} from 'react-icons/si';
+import { SiPostgresql, SiGithub } from 'react-icons/si';
 
-export const skills = [
+export const skillCategories = [
   {
-    name: "React",
-    icon: FaReact,
-    color: "text-blue-500",
+    title: 'Languages',
+    skills: ['Python', 'JavaScript', 'SQL'],
   },
   {
-    name: "JavaScript",
-    icon: FaJs,
-    color: "text-yellow-500",
+    title: 'Frontend',
+    skills: ['React.js', 'HTML5', 'CSS3', 'Responsive Design'],
   },
   {
-    name: "Python",
-    icon: FaPython,
-    color: "text-blue-400",
+    title: 'Tools',
+    skills: ['Git', 'GitHub', 'PySpark', 'Cursor AI'],
   },
   {
-    name: "HTML5",
-    icon: FaHtml5,
-    color: "text-orange-600",
+    title: 'Methodologies',
+    skills: ['Agile', 'Scrum', 'SDLC'],
   },
   {
-    name: "CSS3",
-    icon: FaCss3Alt,
-    color: "text-blue-500",
+    title: 'Soft Skills',
+    skills: ['Communication', 'Teamwork', 'Problem Solving', 'Collaboration'],
   },
-  {
-    name: "PostgreSQL",
-    icon: SiPostgresql,
-    color: "text-blue-700",
-  },
-  {
-    name: "Git",
-    icon: FaGitAlt,
-    color: "text-red-500",
-  },
-  {
-    name: "PySpark",
-    icon: FaBolt,
-    color: "text-orange-500",
-  },
-  {
-    name: "Cursor AI",
-    icon: FaMousePointer,
-    color: "text-purple-500",
-  },
-  {
-    name: "n8n",
-    icon: FaProjectDiagram,
-    color: "text-green-600",
-  },
-  {
-    name: "Gen AI",
-    icon: FaRobot,
-    color: "text-cyan-500",
-  },
-  {
-    name: "Prompt Engineering",
-    icon: FaBrain,
-    color: "text-indigo-500",
-  },
+];
+export const skillIcons = [
+  { name: 'React.js', icon: FaReact, color: 'text-blue-500' },
+  { name: 'JavaScript', icon: FaJs, color: 'text-yellow-500' },
+  { name: 'Python', icon: FaPython, color: 'text-blue-400' },
+  { name: 'SQL', icon: SiPostgresql, color: 'text-blue-700' },
+  { name: 'HTML5', icon: FaHtml5, color: 'text-orange-600' },
+  { name: 'CSS3', icon: FaCss3Alt, color: 'text-blue-500' },
+  { name: 'Git', icon: FaGitAlt, color: 'text-red-500' },
+  { name: 'GitHub', icon: SiGithub, color: 'text-gray-800 dark:text-gray-200' },
+  { name: 'PySpark', icon: FaBolt, color: 'text-orange-500' },
+  { name: 'Cursor AI', icon: FaMousePointer, color: 'text-purple-500' },
+  { name: 'Agile', icon: FaProjectDiagram, color: 'text-green-600' },
+  { name: 'REST APIs', icon: FaCode, color: 'text-cyan-500' },
+];
+
+export const softSkillIcons = [
+  { name: 'Communication', icon: FaComments, color: 'text-indigo-500' },
+  { name: 'Teamwork', icon: FaUsers, color: 'text-teal-500' },
+  { name: 'Problem Solving', icon: FaLightbulb, color: 'text-amber-500' },
+  { name: 'Collaboration', icon: FaHandshake, color: 'text-rose-500' },
 ];
 

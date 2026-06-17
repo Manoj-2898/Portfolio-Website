@@ -1,106 +1,112 @@
 import { FaCode, FaLaptopCode, FaRocket } from 'react-icons/fa';
+import { personalInfo, ABOUT_IMAGE } from '../data/profile';
 
 const About = () => {
   const features = [
     {
       icon: FaCode,
-      title: 'Robust Code',
+      title: 'Clean Architecture',
       description:
-        'Developing clean, efficient, and scalable code by following industry best practices, design principles, and coding standards.',
+        'Building maintainable frontend systems with reusable components, clear structure, and industry best practices.',
     },
     {
       icon: FaLaptopCode,
-      title: 'System Development',
+      title: 'Full-Stack Mindset',
       description:
-        'Designing and building end-to-end software solutions with a strong focus on reliability, maintainability, and usability.',
+        'Designing end-to-end web solutions with React.js, REST APIs, and responsive UI for real-world production use.',
     },
     {
       icon: FaRocket,
-      title: 'Performance Optimization',
+      title: 'Performance Focus',
       description:
-        'Optimizing applications for speed, scalability, and efficiency to ensure smooth performance in real-world scenarios.',
+        'Optimizing load times, responsiveness, and cross-browser compatibility to deliver smooth user experiences.',
     },
   ];
 
   return (
     <section
       id="about"
-      className="py-20 md:py-32 bg-white dark:bg-gray-900 transition-colors duration-300"
+      className="section bg-white dark:bg-gray-900 transition-colors duration-300"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
-        <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 dark:text-white">
+      <div className="site-container">
+        <div className="text-center mb-10 md:mb-12" data-aos="fade-up">
+          <h2 className="section-title font-bold mb-3 text-gray-800 dark:text-white">
             About Me
           </h2>
-          <div className="w-24 h-1 bg-primary-600 mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-primary-600 mx-auto" />
         </div>
 
-        {/* About Content */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          {/* Left Text */}
-          <div data-aos="fade-right">
-            <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-800 dark:text-white">
-              Hi, I'm Manoj Kumar
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-10 items-center mb-10 md:mb-12">
+          <div className="flex justify-center" data-aos="fade-right">
+            <div className="relative max-w-sm md:max-w-md w-full">
+              <div className="absolute -inset-3 bg-gradient-to-br from-primary-400/20 to-primary-600/20 rounded-3xl blur-xl" />
+              <img
+                src={ABOUT_IMAGE}
+                alt={personalInfo.name}
+                className="relative w-full aspect-[4/5] object-cover rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700"
+              />
+            </div>
+          </div>
+
+          <div data-aos="fade-left">
+            <h3 className="text-[clamp(1.35rem,1.1rem+1vw,2rem)] font-semibold mb-4 text-gray-800 dark:text-white max-w-xl">
+              Building scalable, user-focused web applications
             </h3>
 
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed text-lg">
-              I'm a Software Development Engineer with a strong passion for
-              designing, developing, and deploying scalable software solutions.
-              I enjoy solving real-world problems using efficient algorithms and
-              clean system architecture.
+            <p className="body-copy text-gray-600 dark:text-gray-400 mb-3 max-w-2xl">
+              I'm a {personalInfo.title} with hands-on experience developing production web
+              applications at Spendium AI Labs. I specialize in React.js, JavaScript, and
+              modern frontend engineering — turning ideas into polished, performant products.
             </p>
 
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed text-lg">
-              With hands-on experience in frontend development, I create 
-              responsive and interactive web applications using modern JavaScript 
-              frameworks and best engineering practices to deliver smooth user experiences.
+            <p className="body-copy text-gray-600 dark:text-gray-400 mb-3 max-w-2xl">
+              During my internship, I built platforms like iGrace and Pulse-Forge from the
+              ground up, focusing on responsive design, reusable components, and Agile
+              collaboration. I enjoy solving real problems with clean, efficient code.
             </p>
 
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-              I continuously focus on improving my technical skills by building
-              projects, learning new technologies, and adapting to best
-              engineering practices to grow as a professional software engineer.
+            <p className="body-copy text-gray-600 dark:text-gray-400 max-w-2xl">
+              I hold a B.Tech with a CGPA of 9.01 and continuously sharpen my skills through
+              certifications, projects, and staying current with modern development tools.
             </p>
-          </div>
 
-          {/* Right Images */}
-          <div className="grid grid-cols-3 gap-4" data-aos="fade-left">
-            {[
-              'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop',
-              'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=400&fit=crop',
-              'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=400&fit=crop',
-            ].map((img, idx) => (
-              <div
-                key={idx}
-                className="aspect-square rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
-              >
-                <img
-                  src={img}
-                  alt={`About ${idx + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
+            <div className="grid grid-cols-3 gap-3 mt-6">
+              {[
+                { value: '6+', label: 'Months Experience' },
+                { value: '5+', label: 'Projects Built' },
+                { value: '3', label: 'Certifications' },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="text-center p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700"
+                >
+                  <p className="text-xl md:text-2xl font-bold text-primary-600 dark:text-primary-400">
+                    {stat.value}
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Feature Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
+        <div className="grid md:grid-cols-3 gap-5 md:gap-6">
           {features.map((feature, index) => (
             <div
-              key={index}
-              className="p-6 rounded-xl bg-gray-50 dark:bg-gray-800 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              key={feature.title}
+              className="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300 transform hover:-translate-y-1"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              <div className="text-primary-600 dark:text-primary-400 mb-4">
-                <feature.icon size={40} />
+              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400 mb-4">
+                <feature.icon size={24} />
               </div>
-              <h4 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
+              <h4 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">
                 {feature.title}
               </h4>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                 {feature.description}
               </p>
             </div>
