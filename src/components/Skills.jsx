@@ -18,7 +18,7 @@ const Skills = () => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 mb-8">
-          {skillIcons.slice(0, 12).map((skill, index) => {
+          {skillIcons.map((skill, index) => {
             const IconComponent = skill.icon;
             return (
               <div
@@ -30,9 +30,9 @@ const Skills = () => {
                 <div className={`mb-2 ${skill.color} group-hover:scale-105 transition-transform duration-300`}>
                   <IconComponent size={24} />
                 </div>
-                <h3 className="text-[11px] md:text-xs font-semibold text-gray-700 dark:text-gray-300 text-center leading-tight">
+                <span className="block text-[11px] md:text-xs font-semibold text-gray-700 dark:text-gray-300 text-center leading-tight">
                   {skill.name}
-                </h3>
+                </span>
               </div>
             );
           })}

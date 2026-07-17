@@ -7,10 +7,6 @@ import {
   FaGitAlt,
   FaBolt,
   FaMousePointer,
-  FaUsers,
-  FaComments,
-  FaLightbulb,
-  FaHandshake,
   FaProjectDiagram,
   FaCode,
 } from 'react-icons/fa';
@@ -51,12 +47,5 @@ export const skillIcons = [
   { name: 'Cursor AI', icon: FaMousePointer, color: 'text-purple-500' },
   { name: 'Agile', icon: FaProjectDiagram, color: 'text-green-600' },
   { name: 'REST APIs', icon: FaCode, color: 'text-cyan-500' },
-];
-
-export const softSkillIcons = [
-  { name: 'Communication', icon: FaComments, color: 'text-indigo-500' },
-  { name: 'Teamwork', icon: FaUsers, color: 'text-teal-500' },
-  { name: 'Problem Solving', icon: FaLightbulb, color: 'text-amber-500' },
-  { name: 'Collaboration', icon: FaHandshake, color: 'text-rose-500' },
 ];
 
