@@ -1,4 +1,4 @@
-import { FaAward, FaPython, FaDatabase, FaRobot } from 'react-icons/fa';
+import { FaAward, FaPython, FaDatabase, FaRobot, FaExternalLinkAlt } from 'react-icons/fa';
 import { certifications } from '../data/certifications';
 
 const iconMap = {
@@ -28,23 +28,32 @@ const Certifications = () => {
           {certifications.map((cert, index) => {
             const IconComponent = iconMap[cert.icon] || FaAward;
             return (
-              <div
+              <a
                 key={cert.id}
-                className="group bg-white dark:bg-gray-800 rounded-2xl p-5 md:p-6 border border-gray-100 dark:border-gray-700 shadow-md hover:shadow-xl hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300 transform hover:-translate-y-1"
+                href={cert.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${cert.title} credential from ${cert.issuer} (opens in a new tab)`}
+                className="group relative block bg-white dark:bg-gray-800 rounded-2xl p-5 md:p-6 border border-gray-100 dark:border-gray-700 shadow-md hover:shadow-xl hover:border-primary-200 dark:hover:border-primary-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 transition-all duration-300 transform hover:-translate-y-1"
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
+                <FaExternalLinkAlt
+                  size={12}
+                  className="absolute top-4 right-4 text-gray-300 dark:text-gray-600 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-300"
+                  aria-hidden="true"
+                />
                 <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400 mb-4 group-hover:scale-110 transition-transform duration-300">
                   <IconComponent size={22} />
                 </div>
-                <h3 className="text-base md:text-lg font-bold text-gray-800 dark:text-white mb-1.5">
+                <h3 className="text-base md:text-lg font-bold text-gray-800 dark:text-white mb-1.5 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
                   {cert.title}
                 </h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400 font-medium flex items-center gap-2">
                   <FaAward size={12} className="text-primary-500" />
                   {cert.issuer}
                 </p>
-              </div>
+              </a>
             );
           })}
         </div>
