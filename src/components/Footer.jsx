@@ -31,13 +31,17 @@ const Footer = () => {
     { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
     { name: 'Education', href: '#education' },
+    { name: 'Certifications', href: '#certifications' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];
 
   const scrollTo = (e, href) => {
     e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 'auto'
+      : 'smooth';
+    document.querySelector(href)?.scrollIntoView({ behavior });
   };
 
   return (

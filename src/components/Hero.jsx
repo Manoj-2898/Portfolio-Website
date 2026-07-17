@@ -12,7 +12,10 @@ const Hero = () => {
   };
 
   const scrollToProjects = () => {
-    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 'auto'
+      : 'smooth';
+    document.querySelector('#projects')?.scrollIntoView({ behavior });
   };
 
   const socialLinks = [
