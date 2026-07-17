@@ -1,5 +1,5 @@
 import { FaCode, FaLaptopCode, FaRocket } from 'react-icons/fa';
-import { personalInfo, ABOUT_IMAGE } from '../data/profile';
+import { personalInfo, ABOUT_IMAGE, ABOUT_IMAGE_WEBP } from '../data/profile';
 
 const About = () => {
   const features = [
@@ -40,11 +40,18 @@ const About = () => {
           <div className="flex justify-center" data-aos="fade-right">
             <div className="relative max-w-sm md:max-w-md w-full">
               <div className="absolute -inset-3 bg-gradient-to-br from-primary-400/20 to-primary-600/20 rounded-3xl blur-xl" />
-              <img
-                src={ABOUT_IMAGE}
-                alt={personalInfo.name}
-                className="relative w-full aspect-[4/5] object-cover rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700"
-              />
+              <picture>
+                <source srcSet={ABOUT_IMAGE_WEBP} type="image/webp" />
+                <img
+                  src={ABOUT_IMAGE}
+                  alt={personalInfo.name}
+                  width="1000"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                  className="relative w-full aspect-[4/5] object-cover rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700"
+                />
+              </picture>
             </div>
           </div>
 

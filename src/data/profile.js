@@ -1,5 +1,7 @@
 export const PROFILE_IMAGE = `${import.meta.env.BASE_URL}Manoj.png`;
+export const PROFILE_IMAGE_WEBP = `${import.meta.env.BASE_URL}Manoj.webp`;
 export const ABOUT_IMAGE = `${import.meta.env.BASE_URL}manoj_about.png`;
+export const ABOUT_IMAGE_WEBP = `${import.meta.env.BASE_URL}manoj_about.webp`;
 export const RESUME_PATH = `${import.meta.env.BASE_URL}Paleti_ManojKumar_Resume.pdf`;
 export const RESUME_FILENAME = 'Paleti_ManojKumar_Resume.pdf';
 

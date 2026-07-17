@@ -1,5 +1,5 @@
 import { FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { personalInfo, PROFILE_IMAGE, RESUME_PATH, RESUME_FILENAME } from '../data/profile';
+import { personalInfo, PROFILE_IMAGE, PROFILE_IMAGE_WEBP, RESUME_PATH, RESUME_FILENAME } from '../data/profile';
 
 const Hero = () => {
   const handleDownload = () => {
@@ -89,11 +89,18 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full blur-2xl opacity-20 scale-105" />
               <div className="relative w-[320px] h-[320px] sm:w-[350px] sm:h-[350px] lg:w-[380px] lg:h-[380px] rounded-full p-1.5 bg-gradient-to-br from-primary-400 via-primary-500 to-primary-700 shadow-2xl">
-                <img
-                  src={PROFILE_IMAGE}
-                  alt={personalInfo.name}
-                  className="w-full h-full rounded-full object-cover border-4 border-white dark:border-gray-900"
-                />
+                <picture>
+                  <source srcSet={PROFILE_IMAGE_WEBP} type="image/webp" />
+                  <img
+                    src={PROFILE_IMAGE}
+                    alt={personalInfo.name}
+                    width="760"
+                    height="995"
+                    fetchpriority="high"
+                    decoding="async"
+                    className="w-full h-full rounded-full object-cover border-4 border-white dark:border-gray-900"
+                  />
+                </picture>
               </div>
             </div>
           </div>
